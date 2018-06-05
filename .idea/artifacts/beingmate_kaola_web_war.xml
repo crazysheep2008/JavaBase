@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="beingmate.kaola.web:war">
-    <output-path>$PROJECT_DIR$/../kaola/beingmate.kaola/beingmate.kaola.web/target</output-path>
-    <root id="archive" name="beingmate.kaola.web.war">
-      <element id="artifact" artifact-name="beingmate.kaola.web:war exploded" />
-    </root>
-  </artifact>
-</component>
