@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="logPath">D:/logs</Property>
+        <Property name="filePattern">%d{yyyy-MM-dd}.log.gz</Property>
+        <Property name="log4j-default-level">INFO</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 这里不要设置charset，指定编码后在IDE和cmd中会表现不一致，出现乱码 -->
+            <PatternLayout pattern="[%d] %p [%t] %c{3} - %msg%n"/>
+        </Console>
+        <RollingFile name="ROOT" fileName="${logPath}/root.log" filePattern="${logPath}/root-${filePattern}">
+            <PatternLayout charset="UTF-8" pattern="[%d] %p [%t] %c{3} - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="${log4j-default-level}">
+            <AppenderRef ref="ROOT"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

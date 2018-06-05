@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.beingmate.com/ns/logConfig"
+        elementFormDefault="qualified"
+        xmlns:tns="http://www.beingmate.com/ns/logConfig"
+>
+    <element name="aopConfig">
+        <complexType>
+            <attribute name="id" type="string" />
+            <attribute name="logFile" type="string"/>
+            <attribute name="logPerformance" type="boolean"/>
+            <attribute name="logReqSource" type="boolean"/>
+        </complexType>
+    </element>
+</schema>

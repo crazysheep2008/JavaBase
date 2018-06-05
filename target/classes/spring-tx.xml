@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	                    http://www.springframework.org/schema/tx
+	                    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	                    http://www.springframework.org/schema/aop
+	                    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd" default-lazy-init="false">
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="roll*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+
+            <tx:method name="find*" propagation="SUPPORTS" rollback-for="java.lang.Exception"/>
+            <tx:method name="get*" propagation="SUPPORTS" rollback-for="java.lang.Exception"/>
+            <tx:method name="list*" propagation="SUPPORTS" rollback-for="java.lang.Exception"/>
+            <tx:method name="*" propagation="SUPPORTS" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 配置参与事务的类 -->
+    <aop:config>
+        <aop:pointcut id="managerService" expression="execution(* com.beingmate.trade.user.manager.impl..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="managerService"/>
+    </aop:config>
+</beans>
