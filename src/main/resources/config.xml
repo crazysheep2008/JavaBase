@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+    <interceptor-class-name>
+        <value>org.apache.http.HttpResponseInterceptor</value>
+    </interceptor-class-name>
+</setting>

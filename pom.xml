@@ -31,7 +31,11 @@
         <httpcomponents.version>4.5.2</httpcomponents.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>2.2</version>
+        </dependency>
         <dependency>
             <groupId>net.agkn</groupId>
             <artifactId>hll</artifactId>
