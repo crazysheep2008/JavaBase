@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class SortClient {
     public static void main(String[] args) {
-        Class classType = MergeSort.class;
+        Class classType = InsertSort.class;
         SortAlgorithm sortAlgorithm = SortAlgorithmFactory.getSortAlgorithmInstance(classType);
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();

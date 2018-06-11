@@ -27,7 +27,7 @@ public class LogEventMain {
                 threadFactory, ProducerType.SINGLE,
                 new SleepingWaitStrategy());
 
-        disruptor.handleEventsWith(new LogEventHandler());
+       // disruptor.handleEventsWith(new LogEventHandler());
         disruptor.start();
 
         LogEventProducer producer = new LogEventProducer(disruptor.getRingBuffer());
@@ -35,5 +35,6 @@ public class LogEventMain {
         for (int i = 0; i < 20; i++) {
             producer.publishEvent(i);
         }
+        System.out.println("----");
     }
 }
