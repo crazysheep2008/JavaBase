@@ -1,5 +1,7 @@
 package com.beingmate.learn.algorithm.sort;
 
+import com.beingmate.learn.util.ArrayUtil;
+
 /***
  * @author yfeng
  * @date 2018-06-07 12:42
@@ -31,7 +33,7 @@ public class MergeSort extends AbstractSort {
         }
         if ((firstStart + 1) == secondEnd) {
             if (inputData[firstStart] > inputData[secondEnd]) {
-                IntArrayUtil.swap(inputData, firstStart, secondEnd);
+                ArrayUtil.swap(inputData, firstStart, secondEnd);
             }
             return;
         }

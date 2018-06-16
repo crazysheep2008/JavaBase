@@ -1,5 +1,7 @@
 package com.beingmate.learn.algorithm.sort;
 
+import com.beingmate.learn.util.ArrayUtil;
+
 /***
  * @author yfeng
  * @date 2018-06-12 13:01
@@ -27,7 +29,7 @@ public class QuickSort extends AbstractSort {
         }
         if (start + 1 == end) {
             if (inputArray[start] > inputArray[end]) {
-                IntArrayUtil.swap(inputArray, start, end);
+                ArrayUtil.swap(inputArray, start, end);
             }
             return;
         }
@@ -39,7 +41,7 @@ public class QuickSort extends AbstractSort {
             if (rightPos) {
                 //左坑右挖
                 if (inputArray[curIndex] > inputArray[rightIndex]) {
-                    IntArrayUtil.swap(inputArray, curIndex, rightIndex);
+                    ArrayUtil.swap(inputArray, curIndex, rightIndex);
                     curIndex = rightIndex;
                     //调整方向
                     rightPos = false;
@@ -49,7 +51,7 @@ public class QuickSort extends AbstractSort {
             } else {
                 //右坑左挖
                 if (inputArray[leftIndex] > inputArray[curIndex]) {
-                    IntArrayUtil.swap(inputArray, leftIndex, curIndex);
+                    ArrayUtil.swap(inputArray, leftIndex, curIndex);
                     curIndex = leftIndex;
                     //调整方向
                     rightPos = true;
