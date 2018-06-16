@@ -12,18 +12,16 @@ import java.util.Scanner;
  */
 public class SortClient {
     public static void main(String[] args) {
-        Class classType = InsertSort.class;
-        SortAlgorithm sortAlgorithm = SortAlgorithmFactory.getSortAlgorithmInstance(classType);
+        SortAlgorithm sortAlgorithm = SortAlgorithmFactory.getSortAlgorithmInstance(QuickSort.class);
         Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入待排序数组:");
         String line = scanner.nextLine();
         while (StringUtils.isBlank(line)) {
-            System.out.println("输入为空，请继续输入");
+            System.out.print("\\n输入为空，请继续输入");
             line = scanner.nextLine();
         }
         List<String> items = Splitter.on(" ").trimResults().omitEmptyStrings().splitToList(line);
         int[] intArray = items.stream().mapToInt(item -> Integer.parseInt(item)).toArray();
-
-
         sortAlgorithm.sort(intArray);
     }
 }

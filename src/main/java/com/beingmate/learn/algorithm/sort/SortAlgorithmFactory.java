@@ -5,9 +5,10 @@ package com.beingmate.learn.algorithm.sort;
  * @date 2018-06-07 12:59
  */
 public class SortAlgorithmFactory {
-    public static SortAlgorithm getSortAlgorithmInstance(Class className) {
+    public static SortAlgorithm getSortAlgorithmInstance(Class<? extends SortAlgorithm> className) {
+
         try {
-            return (SortAlgorithm) className.newInstance();
+            return className.newInstance();
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
