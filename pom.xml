@@ -189,7 +189,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.beingmate.learn.disruptor.log.LogEventMain</mainClass>
+                            <mainClass>com.beingmate.learn.concurrent.disruptor.log.LogEventMain</mainClass>
                         </configuration>
                     </execution>
                 </executions>
