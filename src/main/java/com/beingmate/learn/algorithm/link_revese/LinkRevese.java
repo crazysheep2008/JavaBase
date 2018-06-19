@@ -37,7 +37,43 @@ public class LinkRevese {
         System.out.println("NULL");
     }
 
+    /**
+     * 直接在链表上做修改，时间复杂度O(N) ,空间复杂度O(1)
+     *
+     * @param head
+     * @return
+     */
     public static ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode preNode = head;
+        ListNode curNode = preNode.next;
+        boolean first = true;
+        while (curNode != null) {
+            ListNode nextNode = curNode.next;
+            if (first) {
+                preNode.next = null;
+                first = false;
+            }
+            curNode.next = preNode;
+            if (nextNode == null) {
+                return curNode;
+            }
+            //切换到下一个
+            preNode = curNode;
+            curNode = nextNode;
+        }
+        return curNode;
+    }
+
+    /**
+     * 使用栈存储，时间复杂度O(N) ,空间复杂度O(N)
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode reverseListWithStack(ListNode head) {
         if (head == null) {
             return null;
         }
