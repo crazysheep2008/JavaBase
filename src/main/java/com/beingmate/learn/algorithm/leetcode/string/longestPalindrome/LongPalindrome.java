@@ -1,4 +1,4 @@
-package com.beingmate.learn.algorithm.longestPalindrome;
+package com.beingmate.learn.algorithm.leetcode.string.longestPalindrome;
 
 public interface LongPalindrome {
     String name();

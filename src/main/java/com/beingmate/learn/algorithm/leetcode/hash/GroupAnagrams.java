@@ -1,4 +1,4 @@
-package com.beingmate.learn.algorithm.group_anagrams;
+package com.beingmate.learn.algorithm.leetcode.hash;
 
 import com.alibaba.fastjson.JSON;
 

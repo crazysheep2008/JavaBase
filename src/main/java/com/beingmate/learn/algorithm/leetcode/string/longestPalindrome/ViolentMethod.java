@@ -1,4 +1,4 @@
-package com.beingmate.learn.algorithm.longestPalindrome;
+package com.beingmate.learn.algorithm.leetcode.string.longestPalindrome;
 
 /**
  * 暴力方法找到最长回文子串

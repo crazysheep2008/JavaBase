@@ -1,8 +1,7 @@
 package com.beingmate.learn.base;
 
-import com.alibaba.fastjson.JSON;
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /***
  * @author yfeng
@@ -10,10 +9,13 @@ import java.util.Arrays;
  */
 public class Base {
     public static void main(String[] args) {
-        long mills = 365 * 24 * 60 * 60 * 1000L;
-        System.out.println(mills);
-        int[] arra1 = {2, 5, 6, 7, 8};
-        int[] array2 = Arrays.copyOf(arra1, 7);
-        System.out.println(JSON.toJSONString(array2));
+        List<String> vals = new ArrayList<>();
+        vals.add("A");
+        vals.add("3");
+        vals.add("D");
+        vals.add("Z");
+        vals.add("B");
+        vals.add("2");
+        vals.add("4");
     }
 }

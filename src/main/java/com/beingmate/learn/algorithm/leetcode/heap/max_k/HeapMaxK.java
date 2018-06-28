@@ -1,4 +1,4 @@
-package com.beingmate.learn.algorithm.max_k;
+package com.beingmate.learn.algorithm.leetcode.heap.max_k;
 
 import com.beingmate.learn.util.ArrayUtil;
 

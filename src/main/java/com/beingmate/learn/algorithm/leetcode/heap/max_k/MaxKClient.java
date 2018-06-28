@@ -1,4 +1,4 @@
-package com.beingmate.learn.algorithm.max_k;
+package com.beingmate.learn.algorithm.leetcode.heap.max_k;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;

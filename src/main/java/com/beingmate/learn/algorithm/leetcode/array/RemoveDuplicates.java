@@ -1,4 +1,4 @@
-package com.beingmate.learn.algorithm.removeDuplicates;
+package com.beingmate.learn.algorithm.leetcode.array;
 
 import com.alibaba.fastjson.JSON;
 import com.beingmate.learn.util.SystemUtil;

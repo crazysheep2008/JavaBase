@@ -1,8 +1,8 @@
-package com.beingmate.learn.algorithm.link_revese;
+package com.beingmate.learn.algorithm.leetcode.linklist;
 
 import java.util.Stack;
 
-public class LinkRevese {
+public class LinkedNodesRevese {
     public static class ListNode {
         int val;
         ListNode next;
@@ -44,6 +44,17 @@ public class LinkRevese {
      * @return
      */
     public static ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
+    }
+
+    public static ListNode reverseListSimple(ListNode head) {
         if (head == null) {
             return null;
         }
