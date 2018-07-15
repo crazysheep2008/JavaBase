@@ -4,6 +4,10 @@ import com.beingmate.learn.algorithm.leetcode.tree.TreeNode;
 
 import java.util.*;
 
+/****
+ *
+ * https://leetcode-cn.com/problems/binary-tree-paths/description/
+ */
 public class TreeAllPath {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> results = new ArrayList();
