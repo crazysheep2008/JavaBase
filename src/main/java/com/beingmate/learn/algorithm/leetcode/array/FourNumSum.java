@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/****
+ * https://leetcode-cn.com/problems/4sum/description/
+ */
 public class FourNumSum {
     public static void main(String[] args) {
         int[] inputs = new int[]{1, 0, -1, 0, -2, 2};
