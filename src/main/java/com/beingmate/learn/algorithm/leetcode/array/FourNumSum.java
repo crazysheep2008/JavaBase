@@ -22,6 +22,17 @@ public class FourNumSum {
         }
     }
 
+    public List<List<Integer>> buildResults(Pair p1, List<Pair> p2s) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (p2s.isEmpty()) {
+            return res;
+        }
+        for (Pair p2 : p2s) {
+            res.add(buildResults(p1, p2));
+        }
+        return res;
+    }
+
     public List<Integer> buildResults(Pair p1, Pair p2) {
         List<Integer> res = new ArrayList<>();
         res.add(p1.l);
@@ -32,10 +43,18 @@ public class FourNumSum {
     }
 
     public static void main(String[] args) {
-        int[] inputs = new int[]{1, 0, -1, 0, -2, 2};
+        int[] inputs = new int[]{-3, -2, -1, 0, 0, 1, 2, 3};
         FourNumSum fns = new FourNumSum();
         List<List<Integer>> datas = fns.fourSum(inputs, 0);
         System.out.println(JSON.toJSONString(datas));
+    }
+
+    private boolean checkContinsAndAdd(Set<Integer> oneSet, int val) {
+        if (oneSet.contains(val)) {
+            return true;
+        }
+        oneSet.add(val);
+        return false;
     }
 
     public List<List<Integer>> fourSum(int[] nums, int target) {
@@ -43,23 +62,55 @@ public class FourNumSum {
         if (nums == null || nums.length < 4) {
             return datas;
         }
-        int numLimit = 4;
+        Arrays.sort(nums);
         List<Pair> outPairs = new ArrayList<>();
+        Set<Integer> oneSet = new HashSet<>();
+        loopi:
+        for (int i = 0; i < nums.length - 3; i++) {
+            int iVal = nums[i];
+            if (checkContinsAndAdd(oneSet, iVal)) {
+                continue loopi;
+            }
 
-        for (int i = 0; i < nums.length - numLimit + 1; i++) {
-            for (int j = i + 1; j < nums.length - numLimit + 2; j++) {
-                Pair p = new Pair(nums[i], nums[j]);
+            Set<Integer> jSet = new HashSet<>();
+            loopj:
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                int jVal = nums[j];
+                if (checkContinsAndAdd(jSet, jVal)) {
+                    continue loopj;
+                }
+                Pair p = new Pair(iVal, nums[j]);
                 outPairs.add(p);
-                Map<Integer, Pair> restMap = new HashMap();
+
+
+                Set<Integer> hSet = new HashSet<>();
+                Map<Integer, List<Pair>> restMap = new HashMap();
+                looph:
                 for (int h = j + 1; h < nums.length - 1; h++) {
+                    int hVal = nums[h];
+                    if (checkContinsAndAdd(hSet, hVal)) {
+                        continue looph;
+                    }
+
+                    Set<Integer> kSet = new HashSet<>();
+                    loopk:
                     for (int k = h + 1; k < nums.length; k++) {
-                        Pair p2 = new Pair(nums[h], nums[k]);
-                        restMap.put(p2.sum(), p2);
+                        int kVal = nums[k];
+                        if (checkContinsAndAdd(kSet, kVal)) {
+                            continue loopk;
+                        }
+                        Pair p2 = new Pair(hVal, kVal);
+                        List<Pair> ps = restMap.get(p2.sum());
+                        if (ps == null) {
+                            ps = new ArrayList<>();
+                            restMap.put(p2.sum(), ps);
+                        }
+                        ps.add(p2);
                     }
                 }
-                Pair restPair = restMap.get(target - p.sum());
-                if (restPair != null) {
-                    datas.add(buildResults(p, restPair));
+                List<Pair> restPairs = restMap.get(target - p.sum());
+                if (restPairs != null) {
+                    datas.addAll(buildResults(p, restPairs));
                 }
             }
         }
