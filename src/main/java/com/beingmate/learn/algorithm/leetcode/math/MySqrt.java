@@ -1,5 +1,8 @@
 package com.beingmate.learn.algorithm.leetcode.math;
 
+/**
+ * https://leetcode-cn.com/problems/perfect-squares/description/
+ */
 public class MySqrt {
 
     public int mySqrt(int x) {
