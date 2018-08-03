@@ -1,7 +1,8 @@
 package com.beingmate.learn.algorithm.leetcode.dp;
 
-import com.alibaba.fastjson.JSON;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.TreeMap;
 
 class MaxSqrCount {
@@ -11,45 +12,43 @@ class MaxSqrCount {
     public static void main(String[] args) {
         MaxSqrCount msc = new MaxSqrCount();
         System.out.println(msc.numSquares(12));
-
-        TreeMap<Integer, Integer> treeMap = new TreeMap();
-        for (int i = 1; i <= 12; i++) {
-            treeMap.put(i, i);
-        }
-        System.out.println(JSON.toJSONString(treeMap, true));
-        System.out.println(treeMap.lowerKey(15));
-        System.out.println(treeMap.higherKey(7));
-    }
-
-    private void initSqrMap(int n) {
-        if (init) {
-            return;
-        }
-        int val = 1;
-        while (true) {
-            int sqrNum = val * val;
-            sqrMap.put(sqrNum, val);
-            val++;
-            if (sqrNum >= n) {
-                break;
-            }
-        }
     }
 
     public int numSquares(int n) {
-        if (n <= 3) {
-            return n;
+        int[] dp = new int[n + 1];
+        //init squrs
+        int base = 0;
+        List<Integer> sqrs = new ArrayList<>();
+        while (true) {
+            int square = base * base;
+            if (square > n){
+                break;
+            }
+            dp[square] = 1;
+            sqrs.add(square);
+            base++;
         }
 
-        int maxSqr = maxSqrNum(n);
-        return 1 + numSquares(n - maxSqr);
+        for (int i = 2; i <= n; i++) {
+            if (dp[i] > 0) {
+                continue;
+            }
+            dp[i] = minValue(dp, i, sqrs);
+        }
+        return dp[n];
     }
 
-    private int maxSqrNum(int n) {
-        if (n <= 3) {
-            return n;
+    private int minValue(int[] dp, int num, List<Integer> sqrs) {
+        List<Integer> nums = new ArrayList<>();
+        int lastIdx = sqrs.size() - 1;
+        for (int sqrIndex = lastIdx; sqrIndex >= 1; sqrIndex--) {
+            int sqrNum = sqrs.get(sqrIndex);
+            if (sqrNum > num) {
+                continue;
+            }
+            int rest = num - sqrNum;
+            nums.add(dp[rest] + 1);
         }
-        initSqrMap(n);
-        return sqrMap.lowerKey(n + 1);
+        return Collections.min(nums);
     }
 }
