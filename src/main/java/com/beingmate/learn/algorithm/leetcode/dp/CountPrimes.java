@@ -57,6 +57,7 @@ public class CountPrimes {
 
 
     public int countPrimes(int n) {
+        long start = System.currentTimeMillis();
         if (n <= 2) {
             return 0;
         }
@@ -86,6 +87,7 @@ public class CountPrimes {
                 count++;
             }
         }
+        System.out.println("spend :" + (System.currentTimeMillis() - start));
         return count;
     }
 
